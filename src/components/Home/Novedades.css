@@ -1,0 +1,108 @@
+/* Contenedor del carrusel */
+.novedades-carousel-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Cada elemento del carrusel */
+.novedad-item {
+    position: relative;
+    padding: 0 10px;
+    overflow: hidden;
+    height: 400px; /* Mantén la altura total fija para las cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+/* Imágenes dentro del carrusel */
+.novedad-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Mantiene una relación de aspecto 1:1 */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Sombra ligera para la imagen */
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+}
+
+/* Texto con sombra dentro de la imagen */
+.novedad-caption {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)); /* Degradado elegante */
+    color: #ffffff; /* Texto en blanco para contrastar mejor */
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    font-weight: 500;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+
+    display: flex; /* Utilizamos flexbox para centrar */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    height: 80px;
+
+    overflow: hidden;
+    white-space: normal; /* Permite saltos de línea */
+    word-wrap: break-word; /* Evita que el texto largo desborde */
+}
+
+/* Efecto hover en el caption */
+.novedad-item:hover .novedad-caption {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
+    transform: translateY(-10px);
+}
+
+/* Opcional: Estilo de los slides para eliminar el borde de enfoque */
+.slick-slide {
+    outline: none;
+}
+
+/* Estilo de los botones de navegación (prev y next) */
+.slick-prev, .slick-next {
+    font-size: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+}
+
+/* Iconos de los botones de navegación */
+.slick-prev:before, .slick-next:before {
+    font-size: 20px;
+    color: white;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .novedad-item {
+        flex: 0 0 45%;
+    }
+}
+
+@media (max-width: 576px) {
+    .novedad-item {
+        flex: 0 0 100%;
+    }
+}
+
+/* Personalización de los puntos de navegación (dots) */
+.slick-dots li button:before {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.slick-dots li.slick-active button:before {
+    color: black;
+}
+
+.slick-dots {
+    bottom: -30px;
+    margin-top: 20px;
+    position: relative;
+}

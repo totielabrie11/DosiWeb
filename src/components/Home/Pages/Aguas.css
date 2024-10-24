@@ -1,0 +1,173 @@
+/* Aplicar margen y relleno general para todas las secciones */
+section {
+  margin: 0; /* Elimina margen superior e inferior */
+  padding: 3rem;
+  width: 100%; /* Asegura que la sección ocupe el 100% */
+  border-radius: 0;
+  box-shadow: none; /* Evita que el fondo esté limitado a un área con sombra */
+  text-align: justify;
+  background-size: cover; /* Ajusta el tamaño de la imagen de fondo */
+  background-position: center;
+  background-repeat: no-repeat; /* Evita que se repita la imagen */
+}
+
+/* Aplicar margen del 5% para todo el contenido dentro de las secciones */
+section > * {
+  margin: 0 5%;
+}
+
+/* Estilo de fuente unificado para la sección de Aguas */
+#aguas h2,
+#aguas h3,
+#aguas span,
+#aguas p,
+#aguas ul,
+#aguas li {
+  font-family: 'Arial', sans-serif; /* Tipo de letra unificado */
+  color: #333; /* Color de fuente unificado */
+  font-weight: 400; /* Grosor de letra unificado */
+}
+
+/* Estilo de títulos (h2) para todas las secciones */
+section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 40px;
+}
+
+/* Sección de Sistemas de Dosificación */
+#sistemas-robustos {
+  background-color: #f8f9fa;
+  text-align: justify;
+}
+
+/* Contenedor de imágenes */
+.image-container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de Equipos de Dosificación */
+.equipment-section {
+  padding: 3rem;
+  background-color: transparent;
+  border-radius: 0;
+  text-align: justify;
+}
+
+.equipment-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 40px;
+}
+
+.equipment-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.equipment {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-grow: 1;
+  width: calc(45% - 10px);
+  text-align: justify;
+}
+
+.equipment:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de Equipos de Cloración */
+#equipos-cloracion {
+  padding: 3rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #000;
+  text-align: justify;
+}
+
+#equipos-cloracion h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+#equipos-cloracion p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+}
+
+/* Sección de Variedad de Equipos */
+#variedad-equipos {
+  padding: 3rem;
+  background-size: cover;
+  background-position: center;
+  text-align: justify;
+}
+
+.equipment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.variedad-equipos__equipment-item {
+  flex: 1 1 calc(45% - 2rem);
+  background-color: #ffffff;
+  padding: 1.5rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .equipment {
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+
+  .equipment-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .variedad-equipos__equipment-item {
+    flex: 1 1 100%;
+  }
+
+  #equipos-cloracion .container {
+    flex-direction: column;
+  }
+}

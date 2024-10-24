@@ -1,0 +1,70 @@
+/* Archivo login.css para estilizar el componente de Login */
+
+#login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  #login-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  #login-container h1 {
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  #login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  #login-container input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  #login-container input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  #login-container button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #login-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  #login-container p {
+    color: red;
+    font-size: 0.9rem;
+  }
+  

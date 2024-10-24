@@ -1,0 +1,192 @@
+.productos-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+  background-color: #f9f9f9; /* Fondo ligero para mejorar el contraste */
+  justify-content: center;
+  min-height: 100vh; /* Ajustar para que la vista detalle ocupe todo el viewport */
+  box-sizing: border-box;
+}
+
+.product-description,
+.product-3d {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.product-description:hover,
+.product-3d:hover {
+  transform: scale(1.02);
+}
+
+.product-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-description h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}
+
+.product-description p {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.product-description ol {
+  list-style: decimal inside;
+  color: #777;
+}
+
+.product-3d {
+  position: relative;
+  height: calc(100vh - 200px); /* Ajustar el tamaño para que no ocupe toda la pantalla */
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-barra-info {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  padding: 15px;
+  text-align: center;
+  font-size: 1em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  margin-top: auto; /* Mover la barra al final de la vista detalle */
+}
+
+.product-barra-info a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.product-barra-info a:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .productos-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-description,
+  .product-3d {
+    max-width: 100%;
+  }
+
+  .product-3d {
+    height: 50vh;
+  }
+
+  .product-barra-info {
+    flex-direction: column;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-description h2 {
+    font-size: 1.5em;
+  }
+
+  .product-description p {
+    font-size: 1em;
+  }
+
+  .controls-container {
+    top: 5px;
+    right: 5px;
+    padding: 8px;
+  }
+}
+
+/* Botón de acción para mejorar la interacción del usuario */
+.product-action-button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-action-button:hover {
+  background-color: #0056b3;
+}
+
+/* Añadir animaciones y transiciones para una experiencia de usuario más fluida */
+.product-3d canvas {
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-3d:hover canvas {
+  transform: rotate(3deg) scale(1.01);
+}
+
+/* CSS */
+.back-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(100, 150, 255, 0.5);
+}
+
+.back-button:active {
+  background-color: #d0d0d0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}

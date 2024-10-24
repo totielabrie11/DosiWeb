@@ -1,0 +1,199 @@
+
+/* Estilos para la sección de Bombas de Vacío */
+/* Estilos específicos para la sección de Bombas de Vacío */
+#bombas\ de\ vacío {
+  padding: 60px 20px;
+}
+
+#bombas\ de\ vacío .bombas-vacio-header {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#bombas\ de\ vacío .bombas-vacio-description {
+  font-size: 1.25rem;
+  color: #333333;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  text-align: center;
+}
+
+/* Estilos específicos para el contenedor de productos en una sola línea */
+#bombas\ de\ vacío .bombas-vacio-product-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-col {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-col:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-card:hover {
+  transform: translateY(-10px);
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-img {
+  width: 40%;
+  height: auto;
+  object-fit: contain;
+  padding: 10px;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-body {
+  padding: 20px;
+  flex: 1;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-text {
+  font-size: 1rem;
+  color: #555555;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#bombas\ de\ vacío .bombas-vacio-product-list li {
+  font-size: 1rem;
+  color: #333333;
+}
+
+#bombas\ de\ vacío .bombas-vacio-btn {
+  background-color: #003366;
+  border: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  align-self: flex-start;
+}
+
+#bombas\ de\ vacío .bombas-vacio-btn:hover {
+  background-color: #0055b3;
+}
+
+/* Estilos responsivos específicos */
+@media (max-width: 768px) {
+  #bombas\ de\ vacío .bombas-vacio-header {
+    font-size: 2rem;
+  }
+
+  #bombas\ de\ vacío .bombas-vacio-description {
+    font-size: 1rem;
+  }
+
+  #bombas\ de\ vacío .bombas-vacio-product-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #bombas\ de\ vacío .bombas-vacio-product-col {
+    max-width: 100%;
+  }
+
+  #bombas\ de\ vacío .bombas-vacio-product-card {
+    flex-direction: column;
+  }
+
+  #bombas\ de\ vacío .bombas-vacio-product-img {
+    width: 100%;
+  }
+
+  #bombas\ de\ vacío .bombas-vacio-product-title {
+    font-size: 1.25rem;
+  }
+
+  #bombas\ de\ vacío .bombas-vacio-product-text {
+    font-size: 0.9rem;
+  }
+
+  #bombas\ de\ vacío .bombas-vacio-btn {
+    padding: 8px 15px;
+  }
+}
+
+/* Estilos para mantenimiento preventivo */
+#mantenimiento-preventivo .mantenimiento-preventivo-container {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.8s ease-out;
+}
+
+#mantenimiento-preventivo .mantenimiento-preventivo-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos para aplicaciones en refrigeración */
+#aplicaciones-refrigeracion .aplicaciones-refrigeracion-container {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.8s ease-out;
+}
+
+#aplicaciones-refrigeracion .aplicaciones-refrigeracion-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos generales */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1rem;
+}

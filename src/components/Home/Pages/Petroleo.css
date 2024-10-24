@@ -1,0 +1,808 @@
+
+
+#especializacion-sistemas {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .equipo-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+  }
+  
+  .equipo {
+    width: 300px;
+    max-height: 800px;
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Centra horizontalmente los elementos */
+    text-align: center;     /* Asegura que el texto también quede centrado */
+  }
+  
+  .equipo img {
+    width: auto;           /* Cambia a auto para mantener la proporción original de la imagen */
+    max-width: 100%;       /* Limita el ancho de la imagen a su contenedor */
+    height: auto;          /* Asegura que la altura se ajuste automáticamente */
+    object-fit: contain;
+    margin-bottom: 15px;
+    display: block;        /* Asegura que la imagen sea un bloque */
+    align-self: center;    /* Centra la imagen horizontalmente dentro del flexbox */
+  }
+  
+  .equipo h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .equipo p {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 10px 0;
+  }
+  
+  
+  .equipo p + p {
+    border-top: 1px solid #ffffff;
+    padding-top: 10px;
+  }
+  
+  .contizar-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    color: #ffffff;
+    background-color: #0000ff;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .contizar-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+    color: #000000;
+  }
+  
+
+  #tipo-de-bombas {
+    padding: 60px 20px;
+  }
+  
+/* CSS para la sección 'tipo-de-bombas' */
+.tipo-de-bombas-section {
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  padding: 50px 20px;
+  color: #ffffff;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 120px;
+}
+
+.images-content .main-image img{
+  width: 80% !important;
+}
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.section-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.sub-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.btn-ver-bombas {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-ver-bombas:hover {
+  background-color: #e64a19;
+  transform: translateY(-3px);
+}
+
+.btn-ver-bombas:active {
+  transform: translateY(0);
+}
+
+
+  .btn-ver-bombas {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-ver-bombas:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 120px;
+    margin-bottom: 30px;
+  }
+  
+  .column {
+    width: 48%;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .image-container-centered {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .dosificacion-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Estilos Responsivos */
+  @media (max-width: 1024px) {
+    .columns {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .column {
+      width: 100%;
+    }
+  
+    .section-title {
+      font-size: 22px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .componentes-dosificacion-section {
+      padding: 30px 15px;
+    }
+  
+    .section-title {
+      font-size: 20px;
+    }
+  
+    .dosificacion-image {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 18px;
+    }
+  
+    ul {
+      font-size: 14px;
+    }
+  
+    .dosificacion-image {
+      max-width: 90%;
+    }
+  }
+  
+  .control-supervision-section {
+    background-color: #0E0A0A;
+    color: #ffffff;
+    padding: 100px 20px;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden; /* Evita que cualquier parte del contenido se salga del contenedor */
+  }
+  
+  .content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px; /* Aumenta el espacio entre el texto y las imágenes */
+    flex-wrap: wrap;
+  }
+  
+  .images-content {
+    flex: 1;
+    max-width: 40%;
+    position: relative;
+    left: -50px; /* Ajusta este valor para mover el conjunto de imágenes hacia la izquierda */
+  }
+  
+  .image-wrapper {
+    position: relative; /* Contenedor relativo para que la secundaria se posicione respecto de la principal */
+    width: 100%;
+  }
+  
+  .main-image {
+    position: relative; /* La imagen principal como punto de referencia */
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .secondary-image {
+    position: absolute; /* Posicionamiento absoluto respecto del contenedor image-wrapper */
+    top: 150px; /* Ajusta la posición vertical según necesites */
+    left: 300px; /* Ajusta la posición horizontal para controlar la superposición */
+    z-index: 2;
+    width: 150px; /* Tamaño de la imagen secundaria */
+  }
+  
+  .supervision-image {
+    width: 120%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .control-module-image {
+    width: 80%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .text-content {
+    flex: 1;
+    max-width: 55%;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .features-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+
+/* Estilos para la sección 'tipo-de-bombas' */
+/* Estilos para la sección 'tipo-de-bombas' */
+#tipo-de-bombas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
+  font-weight: 400;
+}
+
+#tipo-de-bombas::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+#tipo-de-bombas .content-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tipo-de-bombas .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #fcfcfc;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.02;
+}
+
+#tipo-de-bombas .section-description {
+  font-size: 1.1rem;
+  line-height: 1.02;
+  margin-bottom: 10px;
+  color: #e0e0e0;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+#tipo-de-bombas .sub-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+
+#tipo-de-bombas .btn-ver-bombas {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #0000ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-family: 'Arial', sans-serif;
+}
+
+#tipo-de-bombas .btn-ver-bombas:hover {
+  background-color: #ffffff;
+  transform: translateY(-3px);
+  color: #000000;
+}
+
+#tipo-de-bombas .btn-ver-bombas:active {
+  transform: translateY(0);
+}
+
+/* Animaciones adicionales para dar un tono moderno */
+#tipo-de-bombas .section-title, 
+#tipo-de-bombas .sub-title {
+  animation: fadeInDown 1s ease-in-out;
+}
+
+#tipo-de-bombas .section-description {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+#tipo-de-bombas .btn-ver-bombas {
+  animation: fadeInUp 2s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos adicionales para mejorar el responsive de la sección 'control-supervision' */
+
+.control-supervision-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  min-height: 600px;
+  font-family: 'Arial', sans-serif;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.images-content {
+  flex: 1;
+  max-width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.image-wrapper {
+  position: relative; /* Contenedor relativo para que la secundaria se posicione respecto de la principal */
+  width: 100%;
+}
+
+.main-image {
+  position: relative; /* La imagen principal como punto de referencia */
+  width: 100%;
+  z-index: 1;
+}
+
+.secondary-image {
+  position: absolute; /* Posicionamiento absoluto respecto del contenedor image-wrapper */
+  top: 150px; /* Ajusta la posición vertical según necesites */
+  left: 300px; /* Ajusta la posición horizontal para controlar la superposición */
+  z-index: 2;
+  width: 150px; /* Tamaño de la imagen secundaria */
+  transition: transform 0.3s ease;
+}
+
+.secondary-image:hover {
+  transform: scale(1.4);
+}
+
+.supervision-image {
+  width: 120%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.control-module-image {
+  width: 80%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.text-content {
+  flex: 1;
+  max-width: 55%;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para ajustar el diseño a pantallas más pequeñas */
+@media (max-width: 992px) {
+  .content-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .images-content,
+  .text-content {
+    max-width: 100%;
+  }
+
+  .secondary-image:hover {
+    transform: none;
+  }
+}
+
+/* A partir de pantallas pequeñas, los elementos se separan y ocupan su propio lugar con un peso específico */
+@media (max-width: 768px) {
+  .control-supervision-section {
+    padding: 30px 15px;
+  }
+
+  .content-wrapper {
+    gap: 20px;
+  }
+
+  .images-content,
+  .text-content {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .images-content {
+    order: 1;
+    justify-content: center;
+  }
+
+  .text-content {
+    order: 2;
+  }
+
+  .main-image,
+  .secondary-image {
+    position: static;
+    width: 80%;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .images-content .main-image,
+  .images-content .secondary-image {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .control-supervision-section {
+    padding: 20px 10px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .features-list {
+    font-size: 0.9rem;
+  }
+}
+
+/* Sección Equipos Inteligentes */
+#equipos-inteligentes-section {
+  position: relative;
+  padding: 100px 20px;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+#equipos-inteligentes-section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+#equipos-inteligentes-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 40px;
+}
+
+#text-content {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+#image-content {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+#equipos-inteligentes-section-description {
+  max-width: 600px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0 auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-family: 'Arial', sans-serif;
+}
+
+#equipos-inteligentes-section-btn {
+  padding: 10px 30px;
+  font-size: 1rem;
+  border: 2px solid white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+#equipos-inteligentes-section-btn:hover {
+  background-color: white;
+  color: #0E0A0A;
+}
+
+.equipo-item {
+  width: 300px;
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.equipo-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Posicionamiento de Imágenes */
+#image-content .equipo-item:first-of-type {
+  position: relative;
+  z-index: 1;
+}
+
+#image-content .equipo-item:last-of-type {
+  position: absolute;
+  top: 32%;
+  left: 54%;
+  transform: translateY(-50%);
+  z-index: 0;
+  width: 30% !important;
+}
+
+.equipo-item:hover {
+  transform: scale(1.05);
+}
+
+/* Hover para la imagen secundaria */
+#image-content .equipo-item:first-of-type:hover {
+  transform: scale(1.4);
+}
+
+/* Deshabilitar el hover general para todas las imágenes */
+.equipo-item:first-of-type:hover {
+  transform: none;
+}
+/* Ajustes Responsivos */
+@media (max-width: 992px) {
+  #equipos-inteligentes-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #text-content, #image-content {
+    max-width: 100%;
+    min-width: 100% !important;
+    padding: 0 10px;
+  }
+
+  #image-content {
+    position: relative;
+    margin-top: 40px;
+    align-items: center;
+  }
+
+  #image-content .equipo-item:last-of-type {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-top: 20px;
+  }
+
+  #equipos-inteligentes-section-description {
+    text-align: justify;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  #equipos-inteligentes-section-title {
+    font-size: 2rem;
+  }
+
+  #equipos-inteligentes-section-btn {
+    font-size: 1rem;
+    padding: 10px 30px;
+  }
+
+  .equipo-item img {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  #equipos-inteligentes-section {
+    padding: 50px 10px;
+  }
+
+  #equipos-inteligentes-section-title {
+    font-size: 1.8rem;
+  }
+
+  #equipos-inteligentes-section-description {
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: 600;
+    margin: 0 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  #equipos-inteligentes-section-btn {
+    font-size: 0.9rem;
+    padding: 8px 25px;
+  }
+
+  .equipo-item img {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

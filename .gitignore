@@ -1,0 +1,99 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+jspm_packages/
+
+# Bower dependency directory
+bower_components/
+
+# Exclude environment variables except .env for production
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production.local
+.local.env
+
+# Next.js build output
+.next/
+out/
+
+# Create React App build output
+build/
+
+# Gatsby files
+.cache/
+public/
+uploads/
+
+# Parcel-bundler cache
+.cache/
+dist/
+
+# Storybook files
+storybook-static/
+
+# VuePress build output
+.vuepress/dist
+
+# Temp files
+.tmp/
+temp/
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+
+# Miscellaneous
+*.tgz
+*.zip
+*.rar
+*.gz
+
+# Sentry CLI
+.sentryclirc
+
+# Styled Components
+.stylelintrc
+.stylelintrc.js
+.stylelintrc.json
+.stylelintrc.yaml
+.stylelintrc.yml
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# JetBrains IDE
+*.iml
+.idea/
+
+# MacOS files
+.DS_Store
+
+# Coverage reports
+coverage/
+
+# Typescript
+*.tsbuildinfo
+
+# Build directories
+dist/
+.vercel

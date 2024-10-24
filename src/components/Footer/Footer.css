@@ -1,0 +1,181 @@
+#footer-wrapper {
+    background-color: #333; /* Fondo gris oscuro */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)); /* Efecto de degradado */
+    padding: 1.5em 0; /* Reducir la altura del fondo */
+    color: #fff;
+    text-align: left; /* Alinear todo el contenido a la izquierda */
+}
+
+#footer {
+    margin-bottom: 0;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+    padding: 1em 0; /* Reducir el espacio en el footer */
+}
+
+#footer h2 {
+    font-size: 1.5em; /* Aumentar tamaño para mejorar visibilidad en responsive */
+    color: #fff;
+    text-align: left; /* Alinear los títulos a la izquierda */
+}
+
+#footer h3 {
+    font-size: 1.3em; /* Aumentar tamaño para mejorar visibilidad en responsive */
+    color: #fff;
+    text-align: left; /* Alinear los títulos a la izquierda */
+    margin-top: 6px;
+}
+
+#footer a {
+    color: #acb2bf;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#footer ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.2em; /* Aumentar tamaño de los enlaces rápidos en general */
+}
+
+#footer ul li {
+    margin-bottom: 5px; /* Reducir espacio entre los elementos de la lista */
+}
+
+#footer ul.menu li {
+    display: inline-block;
+    margin-right: 1em; /* Reducir el margen entre elementos del menú */
+}
+
+#footer dl.contact dt {
+    color: #ddd;
+}
+
+#copyright {
+    border-top: solid 1px #444;
+    text-align: center;
+    margin-top: 1em; /* Reducir el margen superior */
+    padding: 1.5em 0; /* Reducir el relleno para hacerlo más compacto */
+}
+
+.certificaciones,
+.social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start; /* Alinear las imágenes y los íconos a la izquierda */
+    align-items: center;
+}
+
+.certificaciones img,
+.empresa-info img {
+    width: 120px; /* Aumentar tamaño para mejorar visibilidad en responsive */
+    height: auto; /* Mantén la proporción de las imágenes */
+}
+
+.empresa-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px; /* Reducir espacio entre los logos de "Nuestra empresa" */
+}
+
+.empresa-info p {
+    margin: 0; /* Eliminar el margen entre los elementos de dirección y teléfono */
+}
+
+.empresa-info img:first-child {
+    width: 132px; /* Agrandar el primer logo DOSIVAC un 10% más */
+    border: 2px solid #fff; /* Destacar el primer logo DOSIVAC */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.social-icons a {
+    font-size: 1.7em; /* Aumentar tamaño para mejorar visibilidad en responsive */
+    color: #acb2bf;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}
+
+/* Responsive CSS */
+@media (max-width: 1024px) {
+    #footer-wrapper {
+        padding: 1.5em 1em;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-3 {
+        width: 100%;
+        margin-bottom: 1.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    #footer-wrapper {
+        padding: 1.5em 1em;
+    }
+
+    .certificaciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .empresa-info {
+        margin: 0 auto;
+        text-align: left;
+        gap: 5px; /* Reducir espacio entre elementos en pantallas más pequeñas */
+    }
+
+    .social-icons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Organizar las redes sociales en dos filas */
+        gap: 15px;
+        justify-items: center;
+        width: 100%;
+    }
+
+    #footer ul {
+        font-size: 1.3em; /* Aumentar tamaño de los enlaces rápidos para mejorar visibilidad en responsive */
+    }
+}
+
+@media (max-width: 480px) {
+    #footer-wrapper {
+        padding: 1em 0.5em;
+    }
+
+    .social-icons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Organizar las redes sociales en dos filas */
+        gap: 10px;
+        justify-items: center;
+        width: 100%;
+    }
+
+    .empresa-info {
+        align-items: center;
+        text-align: center;
+        gap: 5px; /* Reducir espacio entre elementos en pantallas más pequeñas */
+    }
+
+    .empresa-info img {
+        width: 80px; /* Aumentar un poco el tamaño en móviles */
+    }
+
+    .col-3 {
+        text-align: center;
+    }
+
+    #footer ul {
+        font-size: 1.3em; /* Aumentar tamaño de los enlaces rápidos para mejorar visibilidad en responsive */
+    }
+}

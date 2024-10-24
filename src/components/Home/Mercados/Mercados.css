@@ -1,0 +1,42 @@
+/* Estilos para el componente Mercados */
+
+.icon-image {
+    max-width: 80%;
+    height: auto;
+}
+
+.mercado-card {
+    max-height: 400px;
+    overflow: hidden;
+    border-color: #003366;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+.mercado-card h3{
+    margin-top: 40px;
+}
+.mercado-button {
+    background-color: #0056b3;
+    border-color: #004080;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.mercado-paragraph {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 1rem;
+}

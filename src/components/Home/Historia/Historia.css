@@ -1,0 +1,44 @@
+/* Historia.css */
+
+.page-section {
+    padding: 100px 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .text-center {
+    text-align: center;
+   
+  }
+  
+  .section-heading {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .section-subheading {
+    font-size: 1.25rem;
+    color: #6c757d;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .section-heading {
+      font-size: 2rem;
+    }
+    .section-subheading {
+      font-size: 1rem;
+    }
+  }

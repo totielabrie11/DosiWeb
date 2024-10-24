@@ -1,0 +1,54 @@
+/* Aplicamos una altura fija a los inputs y al select */
+.form-control-fixed-height {
+    height: 58px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Hacemos que el textarea ocupe todo el espacio de su contenedor */
+#message {
+    resize: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    transition: height 0.3s ease; /* Transición suave cuando cambie la altura */
+    min-height: 213px !important; /* Altura mínima */
+}
+
+#message.expand {
+    min-height: 350px !important; /* Si no está el campo de archivo, aumentar la altura */
+}
+
+/* Ajustamos el input de archivo */
+.form-group input[type="file"] {
+    margin-top: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ajustamos la columna para que se expanda correctamente */
+.col-md-6-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado entre los elementos */
+}
+
+/* Ajustamos el contenedor completo del formulario para que tenga separación entre filas */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Aseguramos que las filas de inputs y textarea no se superpongan */
+.form-row-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start; /* Alineamos los elementos al inicio */
+}
+
+/* Ajustamos el botón de envío */
+#submitButton {
+    margin-top: 20px;
+    width: auto;
+}

@@ -1,0 +1,21 @@
+.btn-download {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-download:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .btn-download:active {
+    background-color: #004494;
+    transform: scale(0.95);
+  }
+  
