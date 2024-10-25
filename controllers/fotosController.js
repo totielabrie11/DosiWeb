@@ -16,7 +16,7 @@ const storageImages = multer.diskStorage({
 
 const uploadImages = multer({ storage: storageImages });
 
-const imagesDir = path.join(__dirname, '..', 'public', 'images');
+const imagesDir = path.join(__dirname, '.', 'public', 'images');
 console.log("🚀 ~ imagesDir:", imagesDir)
 
 // Obtener todas las imágenes
