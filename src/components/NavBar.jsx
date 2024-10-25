@@ -3,6 +3,7 @@ import { Navbar, Nav, Button, NavDropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaCog } from 'react-icons/fa';
 import ScrollSpy from './ScrollSpy'; // Asegúrate de importar correctamente el ScrollSpy
+import DescargarDb from './DescargarDb'; // Importar el componente de descarga
 
 function NavBar({ isAdmin, user, handleLogout, activeSection }) {
   const navigate = useNavigate();
@@ -97,15 +98,19 @@ function NavBar({ isAdmin, user, handleLogout, activeSection }) {
 
               {/* Opciones de administración si el usuario es administrador */}
               {isAdmin && (
-                <NavDropdown title="Administrador" id="admin-dropdown" className="text-uppercase">
-                  <NavDropdown.Item as={Link} to="/admin/productos">Administrar productos</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/admin/notificaciones">Administrar novedades</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/admin/equipo">Administrar equipo</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/admin/distribuidores">Administrar distribuidores</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/admin/fotografias">Administrar Fotografías</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/admin/videos">Administrar Videos</NavDropdown.Item> {/* Vincula VideoAdmin */}
-                </NavDropdown>
-              )}
+              <NavDropdown title="Administrador" id="admin-dropdown" className="text-uppercase">
+                <NavDropdown.Item as={Link} to="/admin/productos">Administrar productos</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/admin/notificaciones">Administrar novedades</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/admin/equipo">Administrar equipo</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/admin/distribuidores">Administrar distribuidores</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/admin/fotografias">Administrar Fotografías</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/admin/videos">Administrar Videos</NavDropdown.Item> {/* Vincula VideoAdmin */}
+                
+                {/* Usamos el componente DescargarDb en lugar de un botón directo */}
+                <DescargarDb />
+              </NavDropdown>
+            )}
+
             </Nav>
 
             {/* Sesión del usuario */}
