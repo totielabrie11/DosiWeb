@@ -7,20 +7,13 @@ const getBackendUrl = () => {
 
   // Determinamos la URL del backend según si es un entorno local o externo
   const BACKEND_URL = isLocalhost
-    ? 'http://localhost:3005'  // Para desarrollo en localhost
-    : process.env.REACT_APP_BACKEND_URL_PROD;  // Para producción, usando variable de entorno
+    ? 'http://localhost:5000'  // URL para el backend en desarrollo (servidor Node.js)
+    : process.env.REACT_APP_BACKEND_URL_PROD;  // URL para producción (ngrok o servidor remoto)
 
   console.log("🚀 ~ BACKEND_URL:", BACKEND_URL);
-
-  // Construimos la URL de la API
-  const apiURL = `${BACKEND_URL}/api/v1`;
-
-  console.log('Environment:', process.env.NODE_ENV);
-  console.log('API URL:', apiURL);
 
   // Retornamos la URL del backend
   return BACKEND_URL;
 };
 
-// Exporta la URL correcta del backend
 export const BACKEND_URL = getBackendUrl();
