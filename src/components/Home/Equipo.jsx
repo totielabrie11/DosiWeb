@@ -47,9 +47,11 @@ const Equipo = () => {
           <h2 className="section-heading text-uppercase">Nuestro Increíble Equipo</h2>
           <h3 className="section-subheading text-muted">Somos un equipo apasionado por la innovación y el desarrollo.</h3>
         </div>
-        <div className="row">
+        
+        {/* Asegurar que los elementos se centren si no llenan la fila */}
+        <div className="row justify-content-center">
           {equipo.map((miembro) => (
-            <div key={miembro.id} className="col-lg-4">
+            <div key={miembro.id} className="col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
               <div className="team-member">
                 <img className="mx-auto rounded-circle" src={miembro.image} alt={miembro.nombre} />
                 <h4>{miembro.nombre}</h4>

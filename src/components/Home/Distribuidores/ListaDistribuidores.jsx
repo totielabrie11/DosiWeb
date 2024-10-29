@@ -18,24 +18,27 @@ const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClic
 
   return (
     <div>
-      <h3>Lista de Distribuidores</h3>
-      
-      {/* Filtro para los tipos de distribuidores */}
-      <div className="mb-3">
-        <label htmlFor="tipoDistribuidor">Filtrar por tipo:</label>
-        <select
-          id="tipoDistribuidor"
-          className="form-select"
-          value={selectedType}
-          onChange={handleFilterChange}
-        >
-          <option value="todos">Todos</option>
-          <option value="nacional">Nacionales</option>
-          <option value="internacional">Internacionales</option>
-          <option value="refrigeracion">Refrigeración</option>
-        </select>
+      {/* Sticky wrapper for both title and filter */}
+      <div className="sticky-header"> {/* Sticky class applied here */}
+        <h3>Lista de Distribuidores</h3>
+        
+        {/* Filtro para los tipos de distribuidores */}
+        <div className="mb-3">
+          <label htmlFor="tipoDistribuidor">Filtrar por tipo:</label>
+          <select
+            id="tipoDistribuidor"
+            className="form-select"
+            value={selectedType}
+            onChange={handleFilterChange}
+          >
+            <option value="todos">Todos</option>
+            <option value="nacional">Nacionales</option>
+            <option value="internacional">Internacionales</option>
+            <option value="refrigeracion">Refrigeración</option>
+          </select>
+        </div>
       </div>
-
+  
       <ul className="list-group">
         {distribuidores
           .filter(
@@ -58,6 +61,8 @@ const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClic
       </ul>
     </div>
   );
+  
+  
 };
 
 export default ListaDistribuidores;

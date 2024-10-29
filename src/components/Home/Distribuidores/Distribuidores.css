@@ -1,57 +1,72 @@
-/* Archivo: Distribuidores.css */
-
 /* Contenedor principal para el mapa y la lista */
 .container-distribuidores {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  /* Mapa */
-  .mapa-container {
-    flex: 1;
-    height: 500px;
-    min-width: 60%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  /* Lista de distribuidores */
-  .lista-distribuidores {
-    flex-basis: 30%;
-    height: 500px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Estilos para los elementos dentro de la lista */
-  .lista-distribuidores ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .lista-distribuidores li {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .lista-distribuidores li:last-child {
-    border-bottom: none;
-  }
-  
-  .lista-distribuidores strong {
-    font-size: 1.2em;
-    display: block;
-  }
-  
-  /* Cambiamos la clase de 'active' a 'distribuidor-seleccionado' */
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+  height: 100vh; /* Use full height of the viewport */
+}
+
+/* Mapa */
+.mapa-container {
+  flex: 1;
+  height: 100%;
+  min-width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Lista de distribuidores */
+.lista-distribuidores {
+  flex-basis: 30%;
+  height: 100%;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0; /* Remove padding so the sticky header fits perfectly */
+  background-color: #f9f9f9;
+  position: relative; /* Make the list container a reference for z-index stacking */
+}
+
+/* Sticky container for both title and filter */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+  padding: 0; /* No padding to ensure it's flush with the top */
+  width: 100%; /* Ensure full width */
+  left: 0;
+  box-sizing: border-box; /* Ensure padding and borders are included in the element’s total width and height */
+  border-bottom: 1px solid #ddd;
+  margin: 0; /* No margin to ensure it's flush */
+}
+
+/* Estilos para los elementos dentro de la lista */
+.lista-distribuidores ul {
+  list-style: none;
+  padding: 10px; /* Add padding here if you need space for list items */
+  margin: 0;
+}
+
+.lista-distribuidores li {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.lista-distribuidores li:last-child {
+  border-bottom: none;
+}
+
+.lista-distribuidores strong {
+  font-size: 1.2em;
+  display: block;
+}
+
+/* Cambiamos la clase de 'active' a 'distribuidor-seleccionado' */
 .distribuidor-seleccionado {
   background-color: #007bff;
   color: white;
