@@ -29,12 +29,12 @@ function EquipoAdmin() {
     } catch (error) {
       console.error('Error fetching equipo:', error);
     }
-  }, []); // Eliminamos BACKEND_URL como dependencia
+  }, []); 
 
   // Obtener todos los miembros del equipo al cargar el componente
   useEffect(() => {
     fetchEquipo();
-  }, [fetchEquipo]); // Añadimos fetchEquipo como dependencia
+  }, [fetchEquipo]);
 
   // Guardar o actualizar miembro del equipo
   const handleSubmit = async (e) => {
@@ -57,7 +57,22 @@ function EquipoAdmin() {
         body: formData,
       });
 
-      if (response.ok) {
+      // Si el archivo ya existe, el servidor devolverá un código de estado 409
+      if (response.status === 409) {
+        const confirmSobrescribir = window.confirm("El archivo ya existe. ¿Desea sobrescribirlo?");
+        if (confirmSobrescribir) {
+          // Enviar una solicitud para sobrescribir el archivo
+          const overwriteResponse = await fetch(`${BACKEND_URL}/api/equipo/overwrite/${imageFile.name}`, {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (overwriteResponse.ok) {
+            alert('Imagen sobrescrita correctamente');
+            fetchEquipo(); // Refrescar el equipo después de sobrescribir
+          }
+        }
+      } else if (response.ok) {
         fetchEquipo(); // Refrescar el equipo
         resetForm();
       } else {
