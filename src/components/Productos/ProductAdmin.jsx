@@ -26,11 +26,26 @@ function ProductAdmin() {
   const [modelFile, setModelFile] = useState(null);
   const inputRef = useRef(null);
 
+  // Función para manejar la ruta de las imágenes
+  const getProductImageURL = (imagePath) => {
+    if (imagePath.startsWith('http') || imagePath.startsWith('//')) {
+      return imagePath; // Imagen servida desde una URL externa
+    }
+    return `${BACKEND_URL}/upload/imagenes/producto/${imagePath}`; // Imagen servida desde el backend
+  };
+
   const fetchProducts = useCallback(async () => {
     try {
       const response = await fetch(`${BACKEND_URL}/api/product-descriptions`);
       const data = await response.json();
-      setProducts(data);
+
+      // Aplicar la lógica para las imágenes
+      const productsWithFullURLs = data.map((product) => ({
+        ...product,
+        imageUrl: getProductImageURL(product.imageUrl) // Asegurarse de que la imagen tenga la URL correcta
+      }));
+
+      setProducts(productsWithFullURLs);
     } catch (error) {
       console.error('Failed to fetch products:', error);
     }
@@ -40,18 +55,7 @@ function ProductAdmin() {
     fetchProducts();
   }, [fetchProducts]);
 
-  useEffect(() => {
-    if (editingIndex !== null && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [editingIndex]);
-
-  useEffect(() => {
-    if (isEditingDescription && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isEditingDescription]);
-
+  // Funciones relacionadas con características, descripción, y ajustes
   const updateDescription = async () => {
     if (selectedProduct) {
       const response = await fetch(`${BACKEND_URL}/api/product-descriptions`, {
@@ -308,6 +312,8 @@ function ProductAdmin() {
             {products.map((product) => (
               <div key={product.name} className="product-item">
                 <span>{product.name}</span>
+                {/* Mostrar la imagen correctamente */}
+                <img src={product.imageUrl} alt={product.name} className="product-image" />
                 <button onClick={() => deleteProductDescription(product.name)}>Eliminar</button>
               </div>
             ))}

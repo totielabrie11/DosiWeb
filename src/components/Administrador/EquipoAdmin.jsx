@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { BACKEND_URL } from '../configLocalHost'; // Importar BACKEND_URL
 
 function EquipoAdmin() {
@@ -12,16 +12,14 @@ function EquipoAdmin() {
   const [imageFile, setImageFile] = useState(null);
   const inputRef = useRef(null);
 
-  // Función para obtener los miembros del equipo desde el backend
-  const fetchEquipo = async () => {
+  // Función para obtener los miembros del equipo desde el backend, memorizada con useCallback
+  const fetchEquipo = useCallback(async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/equipo`); // Usar BACKEND_URL
+      const response = await fetch(`${BACKEND_URL}/api/equipo`);
       if (!response.ok) {
         throw new Error('Error fetching equipo');
       }
       const data = await response.json();
-
-      // Asegurarse de que las URLs de las imágenes incluyan el BACKEND_URL si es necesario
       const equipoConURLsCompletas = data.map((miembro) => ({
         ...miembro,
         image: miembro.image ? `${BACKEND_URL}${miembro.image}` : null, // Concatenar si es necesario
@@ -31,12 +29,12 @@ function EquipoAdmin() {
     } catch (error) {
       console.error('Error fetching equipo:', error);
     }
-  };
+  }, []); // Eliminamos BACKEND_URL como dependencia
 
   // Obtener todos los miembros del equipo al cargar el componente
   useEffect(() => {
     fetchEquipo();
-  }, []);
+  }, [fetchEquipo]); // Añadimos fetchEquipo como dependencia
 
   // Guardar o actualizar miembro del equipo
   const handleSubmit = async (e) => {
@@ -199,7 +197,6 @@ function EquipoAdmin() {
               <p className="mb-1">LinkedIn: <a href={miembro.linkedin} target="_blank" rel="noopener noreferrer">{miembro.linkedin}</a></p>
               {miembro.image && (
                 <div className="mt-2">
-                  {/* Concatenamos BACKEND_URL para las imágenes */}
                   <img src={miembro.image} alt="Miembro del Equipo" className="img-thumbnail" style={{ maxWidth: '150px' }} />
                 </div>
               )}
