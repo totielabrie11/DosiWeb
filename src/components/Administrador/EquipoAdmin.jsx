@@ -20,7 +20,14 @@ function EquipoAdmin() {
         throw new Error('Error fetching equipo');
       }
       const data = await response.json();
-      setEquipo(data);
+
+      // Asegurarse de que las URLs de las imágenes incluyan el BACKEND_URL si es necesario
+      const equipoConURLsCompletas = data.map((miembro) => ({
+        ...miembro,
+        image: miembro.image ? `${BACKEND_URL}${miembro.image}` : null, // Concatenar si es necesario
+      }));
+
+      setEquipo(equipoConURLsCompletas);
     } catch (error) {
       console.error('Error fetching equipo:', error);
     }
@@ -192,6 +199,7 @@ function EquipoAdmin() {
               <p className="mb-1">LinkedIn: <a href={miembro.linkedin} target="_blank" rel="noopener noreferrer">{miembro.linkedin}</a></p>
               {miembro.image && (
                 <div className="mt-2">
+                  {/* Concatenamos BACKEND_URL para las imágenes */}
                   <img src={miembro.image} alt="Miembro del Equipo" className="img-thumbnail" style={{ maxWidth: '150px' }} />
                 </div>
               )}

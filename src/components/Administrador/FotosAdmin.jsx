@@ -25,7 +25,13 @@ function FotosAdmin() {
             : `${BACKEND_URL}/api/images`; // Usar BACKEND_URL
 
           const response = await axios.get(endpoint);
-          const fetchedPhotos = response.data.fondos || response.data.images || [];
+
+          // Asegurarse de que las URLs de las imágenes incluyan el BACKEND_URL si es necesario
+          const fetchedPhotos = (response.data.fondos || response.data.images || []).map(photo => ({
+            ...photo,
+            url: photo.url ? `${BACKEND_URL}${photo.url}` : null // Concatenar si es necesario
+          }));
+
           setPhotos(fetchedPhotos);
           setError(null);  // Limpiar cualquier error previo
         } catch (error) {
@@ -74,7 +80,8 @@ function FotosAdmin() {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
-      const updatedPhotos = [...photos, { name: newPhoto.name, url: response.data.url }];
+      // Concatenar BACKEND_URL a la URL de la imagen si es necesario
+      const updatedPhotos = [...photos, { name: newPhoto.name, url: `${BACKEND_URL}${response.data.url}` }];
       setPhotos(updatedPhotos);
       setNewPhoto({ name: '', image: null });  // Limpiar el formulario
       setError(null);  // Limpiar cualquier error previo

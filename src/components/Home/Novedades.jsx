@@ -15,7 +15,14 @@ const Novedades = () => {
         // Fetch data from the API
         fetch(`${BACKEND_URL}/api/novedades`) // Usa BACKEND_URL aquí
             .then(response => response.json())
-            .then(data => setNovedades(data))
+            .then(data => {
+                // Asegurarse de que las URLs de las imágenes incluyan el BACKEND_URL si es necesario
+                const novedadesConURLsCompletas = data.map((novedad) => ({
+                    ...novedad,
+                    image: novedad.image ? `${BACKEND_URL}${novedad.image}` : null, // Concatenar si es necesario
+                }));
+                setNovedades(novedadesConURLsCompletas);
+            })
             .catch(error => console.error('Error fetching novedades:', error));
     }, []);
 

@@ -14,14 +14,21 @@ const HomeCarousel = () => {
       try {
         // Obtener imágenes
         const response = await axios.get(`${BACKEND_URL}/api/images`); // Usa BACKEND_URL aquí
-        setCarouselImages(response.data.images);  // Actualizar el estado con las imágenes
+
+        // Asegurarse de que las URLs de las imágenes incluyan el BACKEND_URL si es necesario
+        const imagesWithFullURL = response.data.images.map((image) => ({
+          ...image,
+          url: image.url ? `${BACKEND_URL}${image.url}` : null // Concatenar si es necesario
+        }));
+
+        setCarouselImages(imagesWithFullURL);  // Actualizar el estado con las imágenes
 
         // Obtener descripciones adicionales
         const descriptionsResponse = await axios.get(`${BACKEND_URL}/api/fotoText`); // Usa BACKEND_URL aquí
         setAdditionalDescriptions(descriptionsResponse.data);  // Actualizar el estado con las descripciones adicionales
 
         // Mostrar las descripciones en la consola
-        console.log('Imágenes obtenidas:', response.data.images);
+        console.log('Imágenes obtenidas:', imagesWithFullURL);
         console.log('Descripciones adicionales obtenidas:', descriptionsResponse.data);
       } catch (error) {
         console.error('Error al cargar las imágenes o descripciones:', error);

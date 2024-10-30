@@ -106,3 +106,19 @@
     margin-top: 20px;
     position: relative;
 }
+
+.modal-dialog.modal-dialog-centered {
+    margin-top: 80px;
+    min-width: 600px;
+  }
+  
+  /* Media query para pantallas menores a 768px (típico de móviles) */
+  @media (max-width: 768px) {
+    .modal-dialog.modal-dialog-centered {
+      margin-top: 65px; /* Ajusta el margen superior para dispositivos móviles */
+      min-width: 100%; /* Se adapta al ancho completo de la pantalla del móvil */
+      max-width: 90%;  /* Puedes ajustar el ancho máximo si prefieres un poco de espacio */
+      padding: 0 15px; /* Opcional: para evitar que el contenido se pegue demasiado a los bordes */
+    }
+  }
+  

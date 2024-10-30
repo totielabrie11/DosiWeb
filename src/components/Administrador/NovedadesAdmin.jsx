@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; 
 import { BACKEND_URL } from '../configLocalHost'; // Importar BACKEND_URL
 
 function NovedadesAdmin() {
@@ -17,7 +17,14 @@ function NovedadesAdmin() {
         throw new Error('Error fetching novedades');
       }
       const data = await response.json();
-      setNovedades(data);
+
+      // Asegurarse de que las URLs de las imágenes incluyan el BACKEND_URL si es necesario
+      const novedadesConURLsCompletas = data.map((novedad) => ({
+        ...novedad,
+        image: novedad.image ? `${BACKEND_URL}${novedad.image}` : null, // Concatenar si es necesario
+      }));
+
+      setNovedades(novedadesConURLsCompletas);
     } catch (error) {
       console.error('Error fetching novedades:', error);
     }
@@ -149,6 +156,7 @@ function NovedadesAdmin() {
               <span className="badge bg-secondary">{novedad.span}</span>
               {novedad.image && (
                 <div className="mt-2">
+                  {/* Concatenamos BACKEND_URL para las imágenes */}
                   <img src={novedad.image} alt="Novedad" className="img-thumbnail" style={{ maxWidth: '150px' }} />
                 </div>
               )}

@@ -12,7 +12,15 @@ const Equipo = () => {
     try {
       const response = await fetch(`${BACKEND_URL}/api/equipo`); // Usa BACKEND_URL aquí
       const data = await response.json();
-      setEquipo(data);
+
+      // Asegurarse de que las URLs de las imágenes incluyan el BACKEND_URL si es necesario
+      const equipoConURLsCompletas = data.map((miembro) => ({
+        ...miembro,
+        // Concatenamos BACKEND_URL con la imagen si es una ruta relativa
+        image: miembro.image ? `${BACKEND_URL}${miembro.image}` : null,
+      }));
+
+      setEquipo(equipoConURLsCompletas);
     } catch (error) {
       console.error('Error al obtener los datos del equipo:', error);
     }
@@ -53,11 +61,16 @@ const Equipo = () => {
           {equipo.map((miembro) => (
             <div key={miembro.id} className="col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
               <div className="team-member">
-                <img className="mx-auto rounded-circle" src={miembro.image} alt={miembro.nombre} />
+                {/* Foto de perfil del miembro del equipo */}
+                <img 
+                  className="mx-auto rounded-circle" 
+                  src={miembro.image} 
+                  alt={miembro.nombre} 
+                />
                 <h4>{miembro.nombre}</h4>
                 <p className="text-muted">{miembro.rol}</p>
 
-                {/* Correo electrónico */}
+                {/* Botón para el correo electrónico */}
                 <button
                   className="btn btn-dark btn-social mx-2"
                   onClick={() => abrirModal({ tipo: 'email', valor: miembro.email })}
@@ -66,7 +79,7 @@ const Equipo = () => {
                   <i className="fas fa-envelope"></i>
                 </button>
 
-                {/* Teléfono */}
+                {/* Botón para el teléfono */}
                 <button
                   className="btn btn-dark btn-social mx-2"
                   onClick={() => abrirModal({ tipo: 'telefono', valor: miembro.telefono })}
@@ -75,7 +88,7 @@ const Equipo = () => {
                   <i className="fas fa-phone"></i>
                 </button>
 
-                {/* LinkedIn */}
+                {/* Botón para el perfil de LinkedIn */}
                 {miembro.linkedin ? (
                   <a
                     className="btn btn-dark btn-social mx-2"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import { BACKEND_URL } from '../configLocalHost'; // Importar BACKEND_URL
@@ -6,6 +6,11 @@ import { BACKEND_URL } from '../configLocalHost'; // Importar BACKEND_URL
 function EditorFotografico({ show, handleClose, selectedPhoto, onSave }) {
   const [editedPhoto, setEditedPhoto] = useState({ name: selectedPhoto?.name || '', image: null });
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Actualizar el estado cuando selectedPhoto cambie
+    setEditedPhoto({ name: selectedPhoto?.name || '', image: null });
+  }, [selectedPhoto]);
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
@@ -37,7 +42,11 @@ function EditorFotografico({ show, handleClose, selectedPhoto, onSave }) {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
-      onSave({ name: editedPhoto.name, url: response.data.url });
+      // Concatenar BACKEND_URL si es necesario
+      const imageUrl = response.data.url ? `${BACKEND_URL}${response.data.url}` : null;
+
+      // Pasar la URL completa a la función onSave
+      onSave({ name: editedPhoto.name, url: imageUrl });
       handleClose();
     } catch (error) {
       console.error('Error al guardar los cambios:', error);
