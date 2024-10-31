@@ -5,17 +5,21 @@ const path = require('path');
 const axios = require('axios');
 
 const PAGES_DIR = path.join(__dirname, '..', 'src', 'components', 'Home', 'Pages');
-const BACKEND_URL = process.env.BACKEND_URL; // Leer la URL del backend desde la variable de entorno
+
+// Seleccionar la URL del backend según el entorno
+const BACKEND_URL = process.env.NODE_ENV === 'production'
+  ? process.env.BACKEND_URL_PROD
+  : process.env.BACKEND_URL_DEV;
+
+console.log("URL del backend:", BACKEND_URL); // Comprobar la URL del backend
 
 const generatePagesJson = async () => {
   try {
-    // Leer los archivos del directorio de páginas
     const files = await fs.promises.readdir(PAGES_DIR);
     const pages = files
       .filter(file => file.endsWith('.jsx'))
       .map(file => file.replace('.jsx', ''));
 
-    // Enviar la lista de páginas al backend
     const response = await axios.post(`${BACKEND_URL}/api/pages`, { pages });
     if (response.data.success) {
       console.log(`📄 Lista de páginas enviada exitosamente al backend: ${pages.length} páginas detectadas.`);
@@ -27,7 +31,6 @@ const generatePagesJson = async () => {
   }
 };
 
-// Ejecutar el script directamente si es llamado desde la línea de comandos
 if (require.main === module) {
   generatePagesJson();
 }
