@@ -36,8 +36,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "cross-env PORT=3005 react-scripts start",
-  "build": "react-scripts build",
+  "generate-pages": "node scripts/generatePagesJson.js",
+  "start": "npm run generate-pages && react-scripts start",
+  "build": "npm run generate-pages && react-scripts build",
   "test": "react-scripts test",
   "eject": "react-scripts eject"
 },
