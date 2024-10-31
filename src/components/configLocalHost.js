@@ -8,7 +8,7 @@ const getBackendUrl = () => {
   // Determinamos la URL del backend según si es un entorno local o externo
   const BACKEND_URL = isLocalhost
     ? 'http://localhost:5000'  // URL para el backend en desarrollo (servidor Node.js)
-    : process.env.REACT_APP_BACKEND_URL_PROD;  // URL para producción (ngrok o servidor remoto)
+    : process.env.BACKEND_URL_PROD;  // URL para producción (ngrok o servidor remoto)
 
   console.log("🚀 ~ BACKEND_URL:", BACKEND_URL);
 
