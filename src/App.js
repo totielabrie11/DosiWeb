@@ -19,8 +19,6 @@ import Refrigeracion from './components/Home/Pages/Refrigeracion';
 import Refineria from './components/Home/Pages/Refineria';
 import VideoAdmin from './components/Administrador/VideoAdmin';
 
-// Importa el componente PaginasDetector
-import PaginasDetector from './components/PaginasDetector';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -36,9 +34,7 @@ function App() {
 
   return (
     <div>
-      {/* Montar el componente PaginasDetector para que se ejecute en segundo plano */}
-      <PaginasDetector />
-
+     
       <Router>
         <div>
           {/* Barra de navegación */}
