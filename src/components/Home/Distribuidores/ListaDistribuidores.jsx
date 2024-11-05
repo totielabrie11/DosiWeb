@@ -5,6 +5,7 @@ const iconosDistribuidores = {
   nacional: '🌎',
   internacional: '✈️',
   refrigeracion: '❄️',
+  online: 'assets/img/logos/mercadolibre.png', // Ruta de la imagen
 };
 
 const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClick, selectedDistribuidor }) => {
@@ -18,11 +19,9 @@ const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClic
 
   return (
     <div>
-      {/* Sticky wrapper for both title and filter */}
-      <div className="sticky-header"> {/* Sticky class applied here */}
+      <div className="sticky-header">
         <h3>Lista de Distribuidores</h3>
-        
-        {/* Filtro para los tipos de distribuidores */}
+
         <div className="mb-3">
           <label htmlFor="tipoDistribuidor">Filtrar por tipo:</label>
           <select
@@ -35,10 +34,11 @@ const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClic
             <option value="nacional">Nacionales</option>
             <option value="internacional">Internacionales</option>
             <option value="refrigeracion">Refrigeración</option>
+            <option value="online">Online</option>
           </select>
         </div>
       </div>
-  
+
       <ul className="list-group">
         {distribuidores
           .filter(
@@ -48,11 +48,22 @@ const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClic
           .map((distribuidor, idx) => (
             <li
               key={idx}
-              className={`list-group-item ${distribuidor === selectedDistribuidor ? 'distribuidor-seleccionado' : ''}`} // Cambiamos a la clase nueva
-              onClick={() => handleDistribuidorClick(distribuidor)} // Llamar a la función cuando se haga clic en un distribuidor
-              style={{ cursor: 'pointer' }} // Hacemos el elemento clickeable
+              className={`list-group-item ${distribuidor === selectedDistribuidor ? 'distribuidor-seleccionado' : ''}`}
+              onClick={() => handleDistribuidorClick(distribuidor)}
+              style={{ cursor: 'pointer' }}
             >
-              <strong>{iconosDistribuidores[distribuidor.tipo]} {distribuidor.nombre}</strong><br />
+              <strong>
+                {distribuidor.tipo === 'online' ? (
+                  <img 
+                    src={iconosDistribuidores.online} 
+                    alt="Online Icon" 
+                    style={{ width: '24px', height: '24px', marginRight: '8px' }}
+                  />
+                ) : (
+                  iconosDistribuidores[distribuidor.tipo]
+                )}
+                {distribuidor.nombre}
+              </strong><br />
               {distribuidor.direccion}, {distribuidor.provincia}<br />
               Teléfono: {distribuidor.telefono}<br />
               Email: {distribuidor.mail}
@@ -61,8 +72,6 @@ const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClic
       </ul>
     </div>
   );
-  
-  
 };
 
 export default ListaDistribuidores;

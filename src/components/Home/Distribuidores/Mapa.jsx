@@ -6,23 +6,29 @@ import 'leaflet/dist/leaflet.css';
 // Crear iconos diferentes para los tipos de distribuidores
 const iconosDistribuidores = {
   nacional: new L.DivIcon({
-    html: `<div style="color: green; font-size: 24px;"><i class="fas fa-map-marker-alt"></i></div>`, // Marcador verde para nacionales
+    html: `<div style="color: green; font-size: 24px;"><i class="fas fa-map-marker-alt"></i></div>`,
     iconSize: [24, 24],
     iconAnchor: [12, 24],
     popupAnchor: [0, -24],
   }),
   internacional: new L.DivIcon({
-    html: `<div style="color: blue; font-size: 24px;"><i class="fas fa-plane"></i></div>`, // Marcador azul para internacionales
+    html: `<div style="color: blue; font-size: 24px;"><i class="fas fa-plane"></i></div>`,
     iconSize: [24, 24],
     iconAnchor: [12, 24],
     popupAnchor: [0, -24],
   }),
   refrigeracion: new L.DivIcon({
-    html: `<div style="color: lightblue; font-size: 24px;"><i class="fas fa-snowflake"></i></div>`, // Marcador celeste para refrigeración
+    html: `<div style="color: lightblue; font-size: 24px;"><i class="fas fa-snowflake"></i></div>`,
     iconSize: [24, 24],
     iconAnchor: [12, 24],
     popupAnchor: [0, -24],
-  })
+  }),
+  online: new L.Icon({
+    iconUrl: 'assets/img/logos/mercadolibre.png', // Asegúrate de que la ruta sea correcta
+    iconSize: [30, 30], // Ajusta el tamaño del icono si es necesario
+    iconAnchor: [15, 30], // Ajusta el punto de anclaje
+    popupAnchor: [0, -30], // Ajusta el punto de anclaje del popup
+  }),
 };
 
 // Componente que mueve el mapa según el centro y zoom

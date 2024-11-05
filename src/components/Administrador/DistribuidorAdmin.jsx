@@ -168,6 +168,7 @@ function DistribuidorAdmin() {
             <option value="nacional">Nacional</option>
             <option value="internacional">Internacional</option>
             <option value="refrigeracion">Refrigeración</option>
+            <option value="online">Online</option>
           </select>
         </div>
         <div className="mb-3">
