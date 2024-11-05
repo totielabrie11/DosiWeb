@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 // Definimos los iconos de diferentes tipos de distribuidores
 const iconosDistribuidores = {
-  nacional: '🌎',
+  nacional: 'assets/img/logos/logom.png',
   internacional: '✈️',
   refrigeracion: '❄️',
-  online: 'assets/img/logos/mercadolibre.png', // Ruta de la imagen
+  online: 'assets/img/logos/ecommerce.jpg', // Ruta de la imagen
 };
 
 const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClick, selectedDistribuidor }) => {
@@ -53,13 +53,16 @@ const ListaDistribuidores = ({ distribuidores, setFilter, handleDistribuidorClic
               style={{ cursor: 'pointer' }}
             >
               <strong>
-                {distribuidor.tipo === 'online' ? (
+                {typeof iconosDistribuidores[distribuidor.tipo] === 'string' &&
+                iconosDistribuidores[distribuidor.tipo].includes('assets/img') ? (
+                  // Renderizamos la imagen si el tipo es una ruta de imagen
                   <img 
-                    src={iconosDistribuidores.online} 
-                    alt="Online Icon" 
+                    src={iconosDistribuidores[distribuidor.tipo]} 
+                    alt={`${distribuidor.tipo} Icon`} 
                     style={{ width: '24px', height: '24px', marginRight: '8px' }}
                   />
                 ) : (
+                  // Si no es una ruta de imagen, renderizamos el emoji
                   iconosDistribuidores[distribuidor.tipo]
                 )}
                 {distribuidor.nombre}
