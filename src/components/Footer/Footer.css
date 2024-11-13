@@ -179,3 +179,33 @@
         font-size: 1.3em; /* Aumentar tamaño de los enlaces rápidos para mejorar visibilidad en responsive */
     }
 }
+#footer p {
+    font-size: 1em; /* Tamaño de fuente estándar para mejor legibilidad */
+    color: #dcdcdc; /* Color claro, pero no blanco, para contraste en fondo oscuro */
+    line-height: 1.4em; /* Espaciado reducido entre líneas para apariencia más compacta */
+    margin: 0.5em 0; /* Reducir el margen superior e inferior */
+    text-align: left; /* Alinear el texto a la izquierda */
+}
+
+.empresa-info p, #footer .contact p {
+    font-size: 0.95em; /* Tamaño de fuente levemente menor */
+    line-height: 1.3em; /* Espaciado más estrecho para un aspecto compacto */
+    color: #c0c0c0; /* Color gris claro */
+    margin: 0.3em 0; /* Margen reducido para evitar demasiada separación */
+}
+
+/* Ajustes adicionales para móviles */
+@media (max-width: 768px) {
+    #footer p {
+        font-size: 1em;
+        line-height: 1.4em;
+        text-align: center; /* Centrar el texto en pantallas pequeñas */
+    }
+
+    .empresa-info p {
+        font-size: 0.9em;
+        line-height: 1.2em;
+        text-align: center;
+    }
+}
+

@@ -1,0 +1,41 @@
+.bomba-card {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  
+  .bomba-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .bomba-image-container img.bomba-imagen {
+    width: 150px !important; /* Ajustamos el ancho de la imagen */
+    height: auto;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2px;
+  }
+      
+  .bomba-detalles {
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+  }
+  
+  .bomba-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  
+  .bomba-buttons button {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+  

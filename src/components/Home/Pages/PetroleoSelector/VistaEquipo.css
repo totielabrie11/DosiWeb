@@ -1,0 +1,23 @@
+.equipo-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .equipo-imagen {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .equipo-detalles {
+    padding: 20px;
+  }
+  
+  .bomba-selector-container {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  

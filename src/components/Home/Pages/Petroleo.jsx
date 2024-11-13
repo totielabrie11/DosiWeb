@@ -5,6 +5,7 @@ import './Petroleo.css';
 import { BACKEND_URL } from '../../configLocalHost'; // Importar BACKEND_URL desde config.js
 import Encabezado from './Encabezado'; // Importamos el componente Encabezado
 import IrInicio from '../IrInicio/IrInicio';
+import PetroleoSelector from './PetroleoSelector/PetroleoSelector'; 
 
 function Petroleo() {
   const [backgroundImages, setBackgroundImages] = useState({});
@@ -46,6 +47,12 @@ function Petroleo() {
     <div>
       {/* Usamos el componente Encabezado */}
       <Encabezado backgroundImage={backgroundImages.encabezado} />
+
+      {/* Componente de selección de equipos */}
+      <section className="selector-equipo-section text-center py-5">
+        <h2 className="text-white">Selecciona tu equipo de dosificación</h2>
+        <PetroleoSelector />
+      </section>
 
       {/* Sección de Especialización en Sistemas */}
       <section
