@@ -1,17 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BACKEND_URL } from './../configLocalHost'; // Importar la URL del backend
 import './ProductCards.css';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Asegúrate de tener Bootstrap instalado
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ProductCards = ({ products }) => {
   return (
     <div className="product-cards-container">
       {Array.isArray(products) && products.map((product, index) => (
         <div className="product-card card" key={index}>
-          <img 
-            src={product['path-image'] || product.path || 'https://via.placeholder.com/150'} 
-            alt={product.name || 'No Image Available'} 
-            className="card-img-top product-image" 
+          <img
+            src={
+              product['path-image']
+                ? `${BACKEND_URL}/${product['path-image']}` // Construye la URL dinámica para la imagen
+                : 'https://via.placeholder.com/150'
+            }
+            alt={product.name || 'No Image Available'}
+            className="card-img-top product-image"
           />
           <div className="card-body">
             <h3 className="card-title">{product.name || 'Unnamed Product'}</h3>
