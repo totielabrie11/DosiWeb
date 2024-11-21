@@ -5,82 +5,49 @@ const EliminarProductos = ({ backendUrl }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [deleting, setDeleting] = useState(null);
+  const [cleaning, setCleaning] = useState(false); // Estado para el botón de limpieza
 
   // Fetch para cargar los productos desde el backend
   const fetchProducts = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
-      console.log(`Cargando productos desde: ${backendUrl}/api/product-descriptions`); // Depuración
       const response = await fetch(`${backendUrl}/api/product-descriptions`);
       if (!response.ok) {
         throw new Error(`Error al cargar los productos: ${response.status}`);
       }
       const data = await response.json();
-      if (!Array.isArray(data)) {
-        throw new Error('El formato de datos no es un array.');
-      }
-      setProducts(data);
-      console.log('Productos cargados:', data); // Depuración
+      setProducts(Array.isArray(data) ? data : []);
     } catch (err) {
-      console.error('Error en fetchProducts:', err.message);
       setError(err.message);
     } finally {
       setIsLoading(false);
     }
   }, [backendUrl]);
 
-  // Cargar productos al montar el componente
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
 
-  // Función para eliminar un archivo
-  const deleteFile = async (productName) => {
-    console.log(`Eliminando archivo asociado al producto: ${productName}`); // Depuración
-    const response = await fetch(`${backendUrl}/api/delete-file`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: productName }),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Error al eliminar el archivo:', errorData); // Depuración
-      throw new Error(errorData.message || 'Error al eliminar la imagen del producto');
-    }
-    console.log(`Archivo asociado al producto "${productName}" eliminado exitosamente.`);
-  };
-
-  // Función para eliminar un producto
+  // Función para eliminar un producto de la base de datos
   const handleDelete = async (productName) => {
     if (!window.confirm(`¿Estás seguro de que deseas eliminar el producto "${productName}"?`)) {
       return;
     }
 
-    setDeleting(productName); // Indicar que el producto está siendo eliminado
+    setDeleting(productName);
     try {
-      console.log(`Intentando eliminar producto: ${productName}`); // Depuración
-
       // Eliminar el producto de product-descriptions
-      const deleteProductResponse = await fetch(`${backendUrl}/api/product-descriptions`, {
+      await fetch(`${backendUrl}/api/product-descriptions`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name: productName }),
       });
-
-      if (!deleteProductResponse.ok) {
-        const errorData = await deleteProductResponse.json();
-        console.error('Error al eliminar de product-descriptions:', errorData); // Depuración
-        throw new Error(errorData.message || 'Error al eliminar el producto');
-      }
 
       // Eliminar el producto de product-order
-      const deleteOrderResponse = await fetch(`${backendUrl}/api/product-order`, {
+      await fetch(`${backendUrl}/api/product-order`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -88,26 +55,43 @@ const EliminarProductos = ({ backendUrl }) => {
         body: JSON.stringify({ name: productName }),
       });
 
-      if (!deleteOrderResponse.ok) {
-        const errorData = await deleteOrderResponse.json();
-        console.error('Error al eliminar de product-order:', errorData); // Depuración
-        throw new Error(errorData.message || 'Error al eliminar el orden del producto');
-      }
-
-      // Eliminar la imagen asociada al producto
-      await deleteFile(productName);
-
-      // Actualizar la lista de productos después de las eliminaciones
+      // Actualizar la lista de productos
       setProducts((prevProducts) =>
         prevProducts.filter((product) => product.name !== productName)
       );
 
       alert(`Producto "${productName}" eliminado exitosamente.`);
     } catch (error) {
-      console.error('Error eliminando producto:', error.message); // Depuración
-      alert(`No se ha logrado eliminar el producto: ${error.message}`);
+      alert(`Error al eliminar el producto: ${error.message}`);
     } finally {
-      setDeleting(null); // Restablecer el estado de eliminación
+      setDeleting(null);
+    }
+  };
+
+  // Ejecutar el script de limpieza de archivos huérfanos
+  const handleCleanFiles = async () => {
+    if (!window.confirm('¿Estás seguro de que deseas limpiar los archivos huérfanos?')) {
+      return;
+    }
+
+    setCleaning(true);
+    try {
+      const response = await fetch(`${backendUrl}/api/clean-files`, {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(`Error durante la limpieza: ${errorData.message}`);
+        return;
+      }
+
+      const data = await response.json();
+      alert(data.message); // Mensaje de éxito
+    } catch (error) {
+      alert(`Error al ejecutar la limpieza: ${error.message}`);
+    } finally {
+      setCleaning(false);
     }
   };
 
@@ -123,6 +107,13 @@ const EliminarProductos = ({ backendUrl }) => {
   return (
     <div>
       <h1>Eliminar Productos</h1>
+      <button
+        onClick={handleCleanFiles}
+        className="btn btn-warning mb-3"
+        disabled={cleaning}
+      >
+        {cleaning ? 'Limpiando Archivos...' : 'Limpiar Archivos Huérfanos'}
+      </button>
       {products.length === 0 ? (
         <p>No hay productos disponibles. Intenta agregar uno primero.</p>
       ) : (
