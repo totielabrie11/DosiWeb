@@ -1,4 +1,4 @@
-const fs = require('fs');
+/* const fs = require('fs');
 const path = require('path');
 
 // Ruta de la carpeta donde se encuentran los modelos
@@ -67,3 +67,4 @@ fs.writeFileSync(path.join(__dirname, 'src', 'models.json'), JSON.stringify(mode
 console.log(`Total models found: ${models.length}`);
 
 
+ */

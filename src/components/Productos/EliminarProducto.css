@@ -1,0 +1,14 @@
+.eliminar-btn {
+    margin: 5px; /* Espaciado alrededor del botón */
+    padding: 8px 16px; /* Tamaño del botón */
+    font-size: 14px; /* Tamaño de la fuente */
+    border-radius: 4px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Animación al pasar el mouse */
+  }
+  
+  .eliminar-btn:disabled {
+    background-color: #d9534f; /* Color mientras está deshabilitado */
+    opacity: 0.7;
+    cursor: not-allowed; /* Cambiar el cursor cuando está deshabilitado */
+  }
+  

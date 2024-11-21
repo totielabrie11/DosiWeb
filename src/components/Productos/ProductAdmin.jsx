@@ -5,6 +5,7 @@ import ThreeDCanvas from '../ThreeDCanvas/ThreeDCanvas';
 import ProductList from './ProductList';
 import Characteristic from './Characteristic';
 import ProductManuals from './ProductManuals'; // Importa el componente ProductManuals
+import EliminarProducto from './EliminarProducto'; // Importa el componente EliminarProducto
 import { BACKEND_URL } from '../configLocalHost'; // Importa la URL desde el archivo config
 import './Productos.css';
 
@@ -42,7 +43,7 @@ function ProductAdmin() {
       // Aplicar la lógica para las imágenes
       const productsWithFullURLs = data.map((product) => ({
         ...product,
-        imageUrl: getProductImageURL(product.imageUrl) // Asegurarse de que la imagen tenga la URL correcta
+        imageUrl: getProductImageURL(product.imageUrl), // Asegurarse de que la imagen tenga la URL correcta
       }));
 
       setProducts(productsWithFullURLs);
@@ -72,31 +73,6 @@ function ProductAdmin() {
     }
   };
 
-  const deleteProductDescription = async (name) => {
-    if (!window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
-      return;
-    }
-    try {
-      const response = await fetch(`${BACKEND_URL}/api/product`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name }),
-      });
-
-      if (response.ok) {
-        alert('Producto eliminado exitosamente');
-        fetchProducts();
-      } else {
-        alert('No se ha logrado eliminar el producto o la imagen');
-      }
-    } catch (error) {
-      console.error('No se ha logrado eliminar el producto o la imagen:', error);
-      alert('No se ha logrado eliminar el producto o la imagen');
-    }
-  };
-
   const updateCharacteristics = async (updatedCharacteristics) => {
     if (selectedProduct) {
       const response = await fetch(`${BACKEND_URL}/api/product-characteristics`, {
@@ -120,13 +96,13 @@ function ProductAdmin() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          name: selectedProduct, 
-          lightIntensity, 
-          spotLightIntensity, 
-          lightPosition, 
-          isAnimating, 
-          rotationSpeed 
+        body: JSON.stringify({
+          name: selectedProduct,
+          lightIntensity,
+          spotLightIntensity,
+          lightPosition,
+          isAnimating,
+          rotationSpeed,
         }),
       });
 
@@ -135,6 +111,8 @@ function ProductAdmin() {
       }
     }
   };
+
+  
 
   const handleAddCharacteristic = () => {
     const updatedCharacteristics = [...characteristics, newCharacteristic];
@@ -154,9 +132,9 @@ function ProductAdmin() {
   };
 
   const handleChangeCharacteristic = (event, index) => {
-    const updatedCharacteristics = characteristics.map((char, i) => (
+    const updatedCharacteristics = characteristics.map((char, i) =>
       i === index ? event.target.value : char
-    ));
+    );
     setCharacteristics(updatedCharacteristics);
   };
 
@@ -230,11 +208,8 @@ function ProductAdmin() {
   const fetchProductDescription = async (name) => {
     try {
       const response = await fetch(`${BACKEND_URL}/api/product-descriptions`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
       const descriptions = await response.json();
-      const product = descriptions.find(product => product.name === name);
+      const product = descriptions.find((product) => product.name === name);
       if (product) {
         setProductDescription(product.description);
         setSelectedProduct(name);
@@ -255,11 +230,8 @@ function ProductAdmin() {
   const fetchProductSettings = async (name) => {
     try {
       const response = await fetch(`${BACKEND_URL}/api/product-settings`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
       const settings = await response.json();
-      const productSettings = settings.find(setting => setting.name === name);
+      const productSettings = settings.find((setting) => setting.name === name);
       if (productSettings) {
         setLightIntensity(productSettings.lightIntensity);
         setSpotLightIntensity(productSettings.spotLightIntensity);
@@ -308,15 +280,10 @@ function ProductAdmin() {
             setCharacteristics={setCharacteristics}
             handleProductClick={handleProductClick}
           />
+          
           <div className="product-list">
-            {products.map((product) => (
-              <div key={product.name} className="product-item">
-                <span>{product.name}</span>
-                {/* Mostrar la imagen correctamente */}
-                <img src={product.imageUrl} alt={product.name} className="product-image" />
-                <button onClick={() => deleteProductDescription(product.name)}>Eliminar</button>
-              </div>
-            ))}
+          
+            <EliminarProducto backendUrl={BACKEND_URL} />
           </div>
         </div>
         <div className="center-column">
@@ -333,10 +300,7 @@ function ProductAdmin() {
               ) : (
                 <p>
                   {productDescription}
-                  <span
-                    className="edit-icon"
-                    onClick={handleEditDescription}
-                  >
+                  <span className="edit-icon" onClick={handleEditDescription}>
                     ✏️
                   </span>
                 </p>
@@ -367,13 +331,7 @@ function ProductAdmin() {
                 <button onClick={handleAddCharacteristic}>Agregar Característica</button>
                 <button onClick={handleRemoveCharacteristic}>Quitar Última Característica</button>
               </div>
-              
-              {/* Componente ProductManuals para subir manuales y folletos */}
-              <ProductManuals 
-                selectedProduct={selectedProduct} 
-                updateProductDetails={fetchProductDescription} 
-              />
-              
+              <ProductManuals selectedProduct={selectedProduct} updateProductDetails={fetchProductDescription} />
               <div>
                 <input type="file" onChange={handleFileChange} />
                 <button onClick={handleUpload}>Subir Imagen/Modelo</button>
@@ -383,7 +341,7 @@ function ProductAdmin() {
         </div>
         <div className="right-column">
           {modelPath ? (
-            <ThreeDCanvas 
+            <ThreeDCanvas
               modelPath={modelPath}
               lightIntensity={lightIntensity}
               setLightIntensity={setLightIntensity}
