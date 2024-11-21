@@ -46,7 +46,7 @@ function ThreeDCanvas({
   rotationSpeed, 
   setRotationSpeed,
   saveSettings,
-  isAdmin // <- Nueva prop para controlar la visibilidad de los controles
+  isAdmin
 }) {
   const controlsRef = useRef();
   const [modelError, setModelError] = useState(false);
@@ -54,13 +54,15 @@ function ThreeDCanvas({
   const [rotationDirection, setRotationDirection] = useState(1);
 
   // Estado para mostrar/ocultar controles
-  const [showControls, setShowControls] = useState(true);  // Agregado el estado necesario
+  const [showControls, setShowControls] = useState(true);
+
+  const adjustedModelPath = modelPath ? `${BACKEND_URL}/${modelPath.replace(/^\/+/, '')}` : '';
 
   useEffect(() => {
     if (!modelPath) return;
     const fetchSettings = async () => {
       try {
-        const response = await fetch(`${BACKEND_URL}/api/product-settings`); // Usa BACKEND_URL aquí
+        const response = await fetch(`${BACKEND_URL}/api/product-settings`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -94,11 +96,10 @@ function ThreeDCanvas({
     if (saveSettings) saveSettings();
   }, [lightIntensity, spotLightIntensity, lightPosition, isAnimating, rotationSpeed, rotationDirection, saveSettings]);
 
-  const isImage = /\.(jpg|png)$/i.test(modelPath);
+  const isImage = /\.(jpg|png)$/i.test(adjustedModelPath);
 
   return (
     <div className="product-3d">
-      {/* Mostrar controles solo si isAdmin es verdadero */}
       {isAdmin && (
         <button className="toggle-controls-button" onClick={() => setShowControls(!showControls)}>
           {showControls ? '👁️' : '👁️'}
@@ -182,10 +183,10 @@ function ThreeDCanvas({
         </div>
       )}
       {isImage ? (
-        <img src={modelPath} alt="Producto" style={{ maxHeight: '100%', maxWidth: '100%' }} />
+        <img src={adjustedModelPath} alt="Producto" style={{ maxHeight: '100%', maxWidth: '100%' }} />
       ) : (
         <Canvas
-          key={key} // Usar la clave única aquí para forzar la recarga
+          key={key}
           style={{ height: '100%' }}
           camera={{ position: [0, 0, 2], fov: 60, near: 0.1, far: 1000 }}
         >
@@ -194,8 +195,8 @@ function ThreeDCanvas({
           <spotLight position={[5, 5, 5]} intensity={spotLightIntensity} angle={0.3} penumbra={1} castShadow />
           <Suspense fallback={<Html><Loading /></Html>}>
             {!modelError ? (
-              modelPath ? (
-                <Model key={modelPath} path={modelPath} rotationSpeed={rotationSpeed} isAnimating={isAnimating} rotationDirection={rotationDirection} position={[0, 0, 0]} scale={0.5} onError={handleError} />
+              adjustedModelPath ? (
+                <Model key={adjustedModelPath} path={adjustedModelPath} rotationSpeed={rotationSpeed} isAnimating={isAnimating} rotationDirection={rotationDirection} position={[0, 0, 0]} scale={0.5} onError={handleError} />
               ) : (
                 <Html><div>A la espera de mostrar un producto 3D</div></Html>
               )
